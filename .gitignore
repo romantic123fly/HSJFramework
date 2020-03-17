@@ -1,0 +1,11 @@
+Assembly-CSharp.csproj
+*.csproj
+*.sln
+.vs/
+Library/
+obj/
+Logs/
+Temp/
+Build/
+Packages/manifest.json
+Packages/
