@@ -85,16 +85,16 @@ public class UIManager : BaseManager<UIManager>
         _stackReturnInfor = new Stack<UIReturnInfor>();
 
         _normalUIRoot = new GameObject("NormalUIRoot").transform;
-        GameTool.AddChildToParent(_uiRootTrans, _normalUIRoot);
-        GameTool.SetLayer(_uiRootTrans.gameObject.layer, _normalUIRoot);
+        GlobalTools.AddChildToParent(_uiRootTrans, _normalUIRoot);
+        GlobalTools.SetLayer(_uiRootTrans.gameObject.layer, _normalUIRoot);
 
         _keepAboveUIRoot = new GameObject("KeepAboveUIRoot").transform;
-        GameTool.AddChildToParent(_uiRootTrans, _keepAboveUIRoot);
-        GameTool.SetLayer(_uiRootTrans.gameObject.layer, _keepAboveUIRoot);
+        GlobalTools.AddChildToParent(_uiRootTrans, _keepAboveUIRoot);
+        GlobalTools.SetLayer(_uiRootTrans.gameObject.layer, _keepAboveUIRoot);
 
         _topUIRoot = new GameObject("TopUIRoot").transform;
-        GameTool.AddChildToParent(_uiRootTrans, _topUIRoot);
-        GameTool.SetLayer(_uiRootTrans.gameObject.layer, _topUIRoot);
+        GlobalTools.AddChildToParent(_uiRootTrans, _topUIRoot);
+        GlobalTools.SetLayer(_uiRootTrans.gameObject.layer, _topUIRoot);
     }
 
     public void ShowUI(EUiId uiId)
@@ -134,7 +134,7 @@ public class UIManager : BaseManager<UIManager>
                 if (theUI != null)
                 {
                     Transform theRoot = GetUIRoot(theUI);
-                    GameTool.AddChildToParent(theRoot, theUI.transform);
+                    GlobalTools.AddChildToParent(theRoot, theUI.transform);
                     _dicAllUI[uiId] = theUI;
                     baseUI = theUI;
                 }
