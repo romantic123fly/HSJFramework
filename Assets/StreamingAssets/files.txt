@@ -1,8 +1,0 @@
-StreamingAssets|daf01a9d238b6a3887d91e3f9bee0f3e|1
-StreamingAssets.manifest|095fbddf7949741d3392d59081e80acc|0
-ui/mainview.assetbundle|e68641dd276bfc74d5e1cdd49b662bfd|5
-ui/mainview.assetbundle.manifest|3df79b19cd1a80eaafcb51dac3a34ccc|0
-ui/oneview.assetbundle|771d0c38401c68f8640a520ab492a9ef|5
-ui/oneview.assetbundle.manifest|b81915fa9cb588bb3066166b0eb1aab8|0
-ui/twoview.assetbundle|12c6d6e588ea500f4962c81b1d3da0aa|5
-ui/twoview.assetbundle.manifest|fb4dad289ae118e2ef29f72b9071e706|0

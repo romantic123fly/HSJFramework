@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Main.unity
-    guid: 9eacf75d7ef36db438a3a10162ae2b19
+    path: Assets/HSJExample/Finder/FinderScene.unity
+    guid: 5201dbce3f418a04b8fb0e05ec8e04f0
   m_configObjects: {}
