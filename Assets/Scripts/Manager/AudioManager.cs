@@ -1,6 +1,6 @@
 ﻿#region 模块信息
 // **********************************************************************
-// Copyright (C) 2020 Loooto
+// Copyright (C) 2020
 // Please contact me if you have any questions
 // File Name:             AudioManager
 // Author:                幻世界

@@ -9,7 +9,7 @@
 #endregion
 #region 模块信息
 // **********************************************************************
-// Copyright (C) 2019 Blazors
+// Copyright (C) 2019 
 // Please contact me if you have any questions
 // File Name:             GlobalTools
 // Author:                幻世界
