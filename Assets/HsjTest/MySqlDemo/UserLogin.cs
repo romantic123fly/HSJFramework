@@ -22,18 +22,18 @@ public class UserLogin : MonoBehaviour, IPointerClickHandler
     //提示用户登录信息
     public Text loginMessage;
 
-    //IP地址
-    public string host;
-    //端口号
-    public string port;
-    //用户名
-    public string userName;
-    //密码
-    public string password;
-    //数据库名称
-    public string databaseName;
-    //封装好的数据库类
-    MySqlAccess mysql;
+   
+    public string host; //IP地址
+    
+    public string port;//端口号
+   
+    public string userName; //用户名
+   
+    public string password; //密码
+    
+    public string databaseName;//数据库名称
+    
+    MySqlAccess mysql;//封装好的数据库类
 
 
     private void Start()
@@ -73,11 +73,13 @@ public class UserLogin : MonoBehaviour, IPointerClickHandler
             }
             loginMessage.text = loginMsg;
         }
+
         mysql.CloseSql();
     }
 
     private void OnDestroy()
     {
+
         mysql.CloseSql();
     }
 }

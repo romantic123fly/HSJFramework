@@ -78,6 +78,7 @@ public class MySqlAccess
             mySqlConnection.Close();
             mySqlConnection.Dispose();
             mySqlConnection = null;
+            Debug.Log("关闭数据库连接");
         }
     }
 
