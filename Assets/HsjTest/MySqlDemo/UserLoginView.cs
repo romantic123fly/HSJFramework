@@ -14,27 +14,18 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UserLogin : MonoBehaviour, IPointerClickHandler
+public class UserLoginView : MonoBehaviour, IPointerClickHandler
 {
     public InputField userNameInput;
-
     public InputField passwordInput;
-    //提示用户登录信息
-    public Text loginMessage;
-
-   
+    
+    public Text loginMessage;//提示用户登录信息
     public string host; //IP地址
-    
     public string port;//端口号
-   
     public string userName; //用户名
-   
     public string password; //密码
-    
     public string databaseName;//数据库名称
-    
     MySqlAccess mysql;//封装好的数据库类
-
 
     private void Start()
     {

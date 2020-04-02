@@ -16,18 +16,11 @@ using UnityEngine;
 
 public class MySqlAccess
 {
-
-    //连接类对象
     private static MySqlConnection mySqlConnection;
-    //IP地址
     private static string host;
-    //端口号
     private static string port;
-    //用户名
     private static string userName;
-    //密码
     private static string password;
-    //数据库名称
     private static string databaseName;
 
     /// <summary>
@@ -54,16 +47,14 @@ public class MySqlAccess
     {
         try
         {
-            string mySqlString = string.Format("Database={0};Data Source={1};User Id={2};Password={3};port={4}"
-                , databaseName, host, userName, password, port);
+            string mySqlString = string.Format("Database={0};Data Source={1};User Id={2};Password={3};port={4}" , databaseName, host, userName, password, port);
             mySqlConnection = new MySqlConnection(mySqlString);
-            //if(mySqlConnection.State == ConnectionState.Closed)
             mySqlConnection.Open();
-            Debug.Log("服务器连接成功" + host + "/" + port + "/" + databaseName);
+            Debug.Log("打开数据库：" + host + "/" + port + "/" + databaseName);
         }
         catch (Exception e)
         {
-            throw new Exception("服务器连接失败，请重新检查MySql服务是否打开。" + e.Message.ToString());
+            throw new Exception("连接失败，请检查MySql服务是否打开：" + e.Message.ToString());
         }
 
     }
@@ -93,7 +84,6 @@ public class MySqlAccess
     /// <returns></returns>
     public DataSet Select(string tableName, string[] items, string[] whereColumnName, string[] operation, string[] value)
     {
-
         if (whereColumnName.Length != operation.Length || operation.Length != value.Length)
         {
             throw new Exception("输入不正确：" + "要查询的条件、条件操作符、条件值 的数量不一致！");
