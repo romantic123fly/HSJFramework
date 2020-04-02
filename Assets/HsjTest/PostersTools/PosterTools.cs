@@ -23,12 +23,11 @@ public class PosterTools : MonoBehaviour
 {
     public Image mainBg;
     public Image logo;
-    public Text content;
+    public Image qRCode;
+    public Text phoneNum;
     public Text address;
     public Button selectBg;
-    public Button selectLogo;
     public Button screenShot;
-    public Button textColor;
     public GameObject operationView;
 
     private Texture2D img = null;
@@ -36,19 +35,13 @@ public class PosterTools : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        Debug.Log(Screen.width+"/" + Screen.height);
-        //canvas.GetComponent<CanvasScaler>().referenceResolution = new Vector2(1080*a, Screen.height);
-        UnityEngine.Screen.SetResolution(607, Screen.height, false);
+        Screen.SetResolution(540, 960, false);
         Debug.Log(Screen.width + "/" + Screen.height);
-        selectBg.onClick.AddListener(SelectBg);
-        selectLogo.onClick.AddListener(SelectLogo);
-        screenShot.onClick.AddListener(ScreenShot);
-
-        PostersManager.GetInstance().textList.Add(content);
-        PostersManager.GetInstance().textList.Add(address);
+        selectBg.onClick.AddListener(SelectMainBg);
+        screenShot.onClick.AddListener( ()=> { StartCoroutine(CreatePosters()); });
     }
 
-    public void SelectBg()
+    public void SelectMainBg()
     {
         OpenFileDialog od = new OpenFileDialog();
         od.Title = "请选择海报背景";
@@ -59,24 +52,8 @@ public class PosterTools : MonoBehaviour
             //Debug.Log(od.FileName);
             StartCoroutine(GetTexture("file://" + od.FileName,mainBg));
         }
-        /*if (img != null) {
-        //GUI.DrawTexture(new Rect(0,20,img.width,img.height),img);
-        image.sprite=sprite;
-        }*/
+     
     }
-    private void SelectLogo()
-    {
-        OpenFileDialog od = new OpenFileDialog();
-        od.Title = "请选择Logo图片";
-        od.Multiselect = false;
-        od.Filter = "图片文件(*.jpg,*.png,*.bmp)|*.jpg;*.png;*.bmp";
-        if (od.ShowDialog() == DialogResult.OK)
-        {
-            //Debug.Log(od.FileName);
-            StartCoroutine(GetTexture("file://" + od.FileName, logo));
-        }
-    }
-
     IEnumerator GetTexture(string url,Image image)
     {
         WWW www = new WWW(url);
@@ -89,49 +66,67 @@ public class PosterTools : MonoBehaviour
             //Debug.Log(img.width+" "+img.height);
             byte[] date = img.EncodeToPNG();
         }
+        else
+        {
+            Debug.Log(www.error);
+        }
     }
-
-    public void ScreenShot()
+    private void SetImage(string path,Image image)
+    {
+        FileStream fileStream = new FileStream(path, FileMode.Open, FileAccess.Read);
+        //创建文件长度缓冲区
+        byte[] bytes = new byte[fileStream.Length];
+        //读取文件
+        fileStream.Read(bytes, 0, (int)fileStream.Length);
+        //释放文件读取流
+        fileStream.Close();
+        //释放本机屏幕资源
+        fileStream.Dispose();
+        fileStream = null;
+        img = new Texture2D(200,100);
+        img.LoadImage(bytes);
+        //创建Sprite
+        Sprite sprite = Sprite.Create(img, new Rect(0, 0, img.width, img.height), new Vector2(0.5f, 0.5f));
+        image.sprite = sprite;
+    }
+    //生成海报
+    IEnumerator CreatePosters() {
+        foreach (var item in PostersManager.GetInstance().outpatientInfoList)
+        {
+            string logoPath = Application.streamingAssetsPath + "/门诊信息/" + item.name + "/Logo/logo.png";
+            string QrCodePath = Application.streamingAssetsPath + "/门诊信息/" + item.name + "/二维码/二维码.png";
+            SetImage(logoPath,logo);
+            SetImage(QrCodePath, qRCode);
+            address.text = item.address;
+            phoneNum.text = "联系方式： "+item.phoneNum;
+            ScreenShot(item.name);
+            yield return new WaitUntil(() => true);
+        }
+        operationView.gameObject.SetActive(true);
+    }
+    
+    public void ScreenShot(string outpatientName)
     {
         System.DateTime now = System.DateTime.Now;
         string times = now.ToString();
         times = times.Trim();
         times = times.Replace("/", "-");
-        string fileName = "ScreenShot" + times + ".png";
 
-        //不包含UI的截屏
-        //设置为arcamera的渲染
-        //RenderTexture renderTexture = new RenderTexture(Screen.width, Screen.height, 1);
-        //Camera.main.targetTexture = renderTexture;
-        //Camera.main.Render();
-        //RenderTexture.active = renderTexture;
-
-        //Texture2D texture = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, false);
-        //texture.ReadPixels(new Rect(0, 0, UnityEngine.Screen.width, Screen.height), 0, 0);
-        //texture.Apply();
-
-
-        //byte[] bytes = texture.EncodeToPNG();
         operationView.gameObject.SetActive(false);
-        //operationView.transform.position = new Vector3 (operationView.transform.position.x, operationView.transform.position.y-200f);
-        if (!Directory.Exists(Directory.GetParent(Application.dataPath) + "/门诊成品海报/"))
-        {
-            Directory.CreateDirectory(Directory.GetParent(Application.dataPath) + "/门诊成品海报/");
-        }
-        string pathSave = Directory.GetParent(Application.dataPath) + "/门诊成品海报/1.png";
-
-        if (!File.Exists(pathSave))
-        {
-            File.Create(pathSave);
-        }
+ 
+        string pathSave = PostersManager.GetInstance().GetPosterPath(outpatientName)+"/1.png";
+      
         StartCoroutine(SaveImage(pathSave));
     }
-    AsyncOperation asyn;
+
+
     IEnumerator SaveImage(string path)
     {
         ScreenCapture.CaptureScreenshot(path, 5);
         yield return new WaitUntil(() => true);
-        operationView.gameObject.SetActive(true);
+        //yield return new WaitForSeconds(1);
+        Debug.Log(path);
+       
     }
 
 

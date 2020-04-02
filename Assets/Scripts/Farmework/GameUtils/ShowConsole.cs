@@ -164,7 +164,7 @@ public class ShowConsole : MonoBehaviour
             }
 
             GUIStyle style = new GUIStyle();
-            style.fontSize = 40;
+            style.fontSize = 20;
             style.normal.textColor = logTypeColors[log.type];
             GUILayout.Label(log.message, style);
         }
@@ -182,7 +182,7 @@ public class ShowConsole : MonoBehaviour
     {
         GUILayout.BeginHorizontal();
         GUIStyle style = new GUIStyle();
-        style.fontSize = 60;
+        style.fontSize = 20;
 
         if (GUILayout.Button(clearLabel))
         {
@@ -190,7 +190,6 @@ public class ShowConsole : MonoBehaviour
         }
 
         collapse = GUILayout.Toggle(collapse, collapseLabel, GUILayout.ExpandWidth(false));
-
         GUILayout.EndHorizontal();
     }
 

@@ -23,30 +23,15 @@ public class PostersManager : MonoBehaviour
     {
         instance = this;
     }
+    public string theCurrentFestival ="未知节日";
     private Color textColor;
-    public List<Text> textList =new List<Text> ();
     public List<OutpatientInfo> outpatientInfoList = new List<OutpatientInfo> ();
     public Dictionary<string, Dictionary<string, string>> cfgData;
-    public Color TextColor {
-        get => textColor;
-        set
-        {
-            textColor = value;
-            if (textList.Count > 0)
-            {
-                foreach (var item in textList)
-                {
-                    item.color = textColor;
-                }
-            }
-        }
-    }
 
     // Start is called before the first frame update
     void Start()
     {
-       
-        string cfgPath = Application.streamingAssetsPath + "/1.txt";
+        string cfgPath = Application.streamingAssetsPath + "/门诊信息.txt";
         if (File.Exists(cfgPath))
         {
             StartCoroutine(LoadCfg(cfgPath));
@@ -59,8 +44,39 @@ public class PostersManager : MonoBehaviour
         yield return www;
         if (www.isDone)
         {
-           var a= ExplainString(www.text);
+            cfgData = ExplainString(www.text);
         }
+        //门诊列表赋值
+
+        for (int i = 0; i < cfgData["Name"].Values.Count; i++)
+        {
+            OutpatientInfo opinfo = new OutpatientInfo();
+            opinfo.id = i + "";
+            opinfo.name = cfgData["Name"][i + ""];
+            opinfo.phoneNum = cfgData["PhoneNum"][i + ""];
+            opinfo.address = cfgData["Address"][i + ""];
+            outpatientInfoList.Add(opinfo);
+        }
+    }
+
+    public  void CreateInfoPath()
+    {
+        string infoPath = Application.streamingAssetsPath + "/门诊信息";
+        if (!Directory.Exists(infoPath)) Directory.CreateDirectory(infoPath);
+        //生成门诊存储路径
+        foreach (var item in outpatientInfoList)
+        {
+            string namePath = infoPath + "/" + item.name;
+            if (!Directory.Exists(namePath)) Directory.CreateDirectory(namePath);
+            Directory.CreateDirectory(namePath + "/Logo");
+            Directory.CreateDirectory(namePath + "/二维码");
+            Directory.CreateDirectory(namePath  + "/海报" + "/" + theCurrentFestival);
+        }
+    }
+
+    public string GetPosterPath(string outpatientName)
+    {
+        return Application.streamingAssetsPath + "/门诊信息/" + outpatientName  + "/海报" + "/" + theCurrentFestival;
     }
     public static Dictionary<string, Dictionary<string, string>> ExplainString(string strLine)
     {
@@ -110,7 +126,7 @@ public class PostersManager : MonoBehaviour
             {
     
                 //<ID><字段值>
-                hasData[content[key][i]] = Data[i];
+                hasData[i+""] = Data[i];
             }
             DicContent[key] = hasData;
         }
