@@ -7,17 +7,14 @@
 // QQ:                    853394528 
 // **********************************************************************
 #endregion
-using DG.Tweening;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 using UnityEngine;
 using UnityEngine.UI;
 using Application = UnityEngine.Application;
 using Button = UnityEngine.UI.Button;
-using Screen = UnityEngine.Screen;
 
 public class PosterTools : MonoBehaviour
 {
@@ -26,6 +23,8 @@ public class PosterTools : MonoBehaviour
     public Image qRCode;
     public Text phoneNum;
     public Text address;
+    public Text content;
+    public InputField contentInput;
     public Button selectBg;
     public Button screenShot;
     public GameObject operationView;
@@ -35,28 +34,42 @@ public class PosterTools : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        Screen.SetResolution(540, 960, false);
-        Debug.Log(Screen.width + "/" + Screen.height);
+       
         selectBg.onClick.AddListener(SelectMainBg);
-        screenShot.onClick.AddListener( ()=> { StartCoroutine(CreatePosters()); });
+        screenShot.onClick.AddListener(() => { StartCoroutine(CreatePosters()); });
+        if (PostersManager.GetInstance().theCurrentFestival == "营销海报")
+        {
+            contentInput.gameObject.SetActive(true);
+        }
     }
 
     public void SelectMainBg()
     {
-        OpenFileDialog od = new OpenFileDialog();
-        od.Title = "请选择海报背景";
-        od.Multiselect = false;
-        od.Filter = "图片文件(*.jpg,*.png,*.bmp)|*.jpg;*.png;*.bmp";
-        if (od.ShowDialog() == DialogResult.OK)
+        try
         {
-            //Debug.Log(od.FileName);
-            StartCoroutine(GetTexture("file://" + od.FileName,mainBg));
+            Debug.Log(0);
+            OpenFileDialog od = new OpenFileDialog();
+            od.Title = "请选择海报背景";
+            od.Multiselect = false;
+            od.Filter = "图片文件(*.jpg,*.png,*.bmp)|*.jpg;*.png;*.bmp";
+            if (od.ShowDialog() == DialogResult.OK)
+            {
+                Debug.Log(1);
+                //Debug.Log(od.FileName);
+                StartCoroutine(GetTexture("file://" + od.FileName, mainBg));
+            }
         }
-     
+        catch (Exception e)
+        {
+
+            Debug.Log(e.Message);
+        }
     }
     IEnumerator GetTexture(string url,Image image)
     {
+        Debug.Log(2);
         WWW www = new WWW(url);
+        Debug.Log(url);
         yield return www;
         if (www.isDone && www.error == null)
         {
@@ -73,6 +86,20 @@ public class PosterTools : MonoBehaviour
     }
     private void SetImage(string path,Image image)
     {
+        DirectoryInfo root = new DirectoryInfo(path);
+        if (root.GetFiles().Length > 0)
+        {
+            string fileName = root.GetFiles()[0].Name;
+            if (fileName.ToUpper().EndsWith(".JPG") || fileName.ToUpper().EndsWith(".PNG"))
+            {
+                path += fileName;
+            }
+        }
+        else
+        {
+            Debug.LogError(path.Split('/')[5] + "--" + path.Split('/')[6] + "-未设置");
+            return;
+        }
         FileStream fileStream = new FileStream(path, FileMode.Open, FileAccess.Read);
         //创建文件长度缓冲区
         byte[] bytes = new byte[fileStream.Length];
@@ -93,12 +120,23 @@ public class PosterTools : MonoBehaviour
     IEnumerator CreatePosters() {
         foreach (var item in PostersManager.GetInstance().outpatientInfoList)
         {
-            string logoPath = Application.streamingAssetsPath + "/门诊信息/" + item.name + "/Logo/logo.png";
-            string QrCodePath = Application.streamingAssetsPath + "/门诊信息/" + item.name + "/二维码/二维码.png";
-            SetImage(logoPath,logo);
+            string logoPath = Application.streamingAssetsPath + "/门诊信息/" + item.name + "/Logo/";
+            string QrCodePath = Application.streamingAssetsPath + "/门诊信息/" + item.name + "/二维码/";
+            SetImage(logoPath, logo);
             SetImage(QrCodePath, qRCode);
             address.text = item.address;
-            phoneNum.text = "联系方式： "+item.phoneNum;
+            phoneNum.text = "联系方式： " + item.phoneNum;
+            if (PostersManager.GetInstance().theCurrentFestival == "营销海报")
+            {
+                if (contentInput.text!="")
+                {
+                    content.text = contentInput.text;
+                }
+                else
+                {
+                    content.text = item.content;
+                }
+            }
             ScreenShot(item.name);
             yield return new WaitUntil(() => true);
         }
@@ -125,16 +163,19 @@ public class PosterTools : MonoBehaviour
         ScreenCapture.CaptureScreenshot(path, 5);
         yield return new WaitUntil(() => true);
         //yield return new WaitForSeconds(1);
-        Debug.Log(path);
-       
+        Debug.Log(path.Split('/')[5]+"--海报生成成功！！");
     }
 
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+       
+        if (PostersManager.GetInstance().theCurrentFestival =="营销海报")
         {
-            UnityEngine.Application.Quit();
+            if (contentInput.text!="")
+            {
+                content.text = contentInput.text;
+            }
         }
     }
 }

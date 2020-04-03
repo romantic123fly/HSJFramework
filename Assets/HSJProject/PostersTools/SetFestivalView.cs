@@ -10,11 +10,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class SetFestivalView : MonoBehaviour
 {
     public  Dropdown dp;
+    public GameObject MainView;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +24,7 @@ public class SetFestivalView : MonoBehaviour
             PostersManager.GetInstance().theCurrentFestival = dp.options[a].text;
             PostersManager.GetInstance().CreateInfoPath();
             gameObject.SetActive(false);
+            MainView.SetActive(true);
         });
     }
 }

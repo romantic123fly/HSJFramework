@@ -23,7 +23,7 @@ public class PostersManager : MonoBehaviour
     {
         instance = this;
     }
-    public string theCurrentFestival ="未知节日";
+    public string theCurrentFestival ="营销海报";
     private Color textColor;
     public List<OutpatientInfo> outpatientInfoList = new List<OutpatientInfo> ();
     public Dictionary<string, Dictionary<string, string>> cfgData;
@@ -31,13 +31,21 @@ public class PostersManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Screen.SetResolution(540, 960, false);
+        Debug.Log(Screen.width + "/" + Screen.height);
         string cfgPath = Application.streamingAssetsPath + "/门诊信息.txt";
         if (File.Exists(cfgPath))
         {
             StartCoroutine(LoadCfg(cfgPath));
         }
     }
-
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            UnityEngine.Application.Quit();
+        }
+    }
     public IEnumerator LoadCfg(string cfgPath)
     {
         WWW www = new WWW(cfgPath);
@@ -47,7 +55,6 @@ public class PostersManager : MonoBehaviour
             cfgData = ExplainString(www.text);
         }
         //门诊列表赋值
-
         for (int i = 0; i < cfgData["Name"].Values.Count; i++)
         {
             OutpatientInfo opinfo = new OutpatientInfo();
@@ -55,6 +62,7 @@ public class PostersManager : MonoBehaviour
             opinfo.name = cfgData["Name"][i + ""];
             opinfo.phoneNum = cfgData["PhoneNum"][i + ""];
             opinfo.address = cfgData["Address"][i + ""];
+            opinfo.content = cfgData["Content"][i + ""];
             outpatientInfoList.Add(opinfo);
         }
     }

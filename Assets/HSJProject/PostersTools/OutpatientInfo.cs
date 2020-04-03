@@ -16,4 +16,5 @@ public class OutpatientInfo {
     public  string name;
     public  string phoneNum;
     public  string address;
+    public  string content;
 }
