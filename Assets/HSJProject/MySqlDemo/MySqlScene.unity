@@ -1840,10 +1840,10 @@ MonoBehaviour:
   resigerBtn: {fileID: 1028907028}
   logoutBtn: {fileID: 1301654690}
   changepasswordBtn: {fileID: 222698361}
-  host: 127.0.0.1
+  host: 106.12.218.138
   port: 3306
   userName: hsj
-  password: romantic
+  password: romantic123456
 --- !u!1 &2057554181
 GameObject:
   m_ObjectHideFlags: 0
