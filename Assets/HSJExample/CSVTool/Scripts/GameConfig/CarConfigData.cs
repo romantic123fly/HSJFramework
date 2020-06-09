@@ -28,6 +28,6 @@ public  partial  class CarConfigData : GameConfigDataBase
 	public string levelupFailTip;
 	protected override string getFilePath()
 	{
-		return"CarConfigData";
+		return "CarConfigData";
 	}
 }

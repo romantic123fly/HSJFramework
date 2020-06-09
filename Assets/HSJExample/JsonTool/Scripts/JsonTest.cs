@@ -13,13 +13,16 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class JsonTest : MonoBehaviour
 {
-    private string JsonDataPath = "/JsonTool/Resources/JsonData";
+    public Text text;
+    private string JsonDataPath = "/HSJExample/JsonTool/Resources/JsonData";
     // Start is called before the first frame update
     void Start()
     {
+
         Dog dog = new Dog("旺财","黄","2","公","15");
         //对象转换为json
         //var dogJsonData = JsonParser.ObjectToJson(dog);
@@ -39,8 +42,8 @@ public class JsonTest : MonoBehaviour
         fs.Position = 0;
         fs.Close();
         fs.Dispose();
-        Debug.Log(dogJsonData);
-
+        Debug.Log("数据内容："+dogJsonData);
+        text.text += "数据内容：" + dogJsonData;
     }
 
     private void Update()
@@ -48,12 +51,16 @@ public class JsonTest : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q))
         {
             string data =  File.ReadAllText(Application.dataPath + JsonDataPath + "/Dog.json", System.Text.Encoding.UTF8);
+            //使用unity自带JsonUtility类
             var dogJsonData = JsonParser.JsonToObject<Dog>(data);
+            //使用外部LitJson.dll用法,ios端不可使用
             //var dogJsonData = JsonParser.JsonDeSerialize<Dog>(data);
+            //使用外部Newtonsoft.dll用法，兼容安卓iso
             //var dogJsonData = JsonParser.NJsonDeSerialize<Dog>(data);
             Debug.Log(dogJsonData.name);
             Debug.Log(dogJsonData.color);
             Debug.Log(dogJsonData.age);
+            text.text += "\n读取json内容：" + dogJsonData.name+" ,"+ dogJsonData.color+"," + dogJsonData.age;
         }
     }
 }

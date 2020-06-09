@@ -1,0 +1,32 @@
+[
+    {
+        "id": 0,
+        "title": "天使之翼",
+        "value": 5,
+        "description": "银鳞胸甲，蓝色品质，5G一家",
+        "madeby": "神棍德",
+        "slug": "天使之翼",
+        "stackavle": false,
+        "stackMax": 20
+    },
+    {
+        "id": 1,
+        "title": "杀猪刀",
+        "value": 666,
+        "description": "没有杀猪刀的男人不是真正的男人",
+        "madeby": "伊利丹",
+        "slug": "杀猪刀",
+        "stackavle": true,
+        "stackMax": 10
+    },
+    {
+        "id": 2,
+        "title": "战神纸戒指",
+        "value": 666,
+        "description": "我是由布隆创造的",
+        "madeby": "布隆",
+        "slug": "戒指",
+        "stackavle": false,
+        "stackMax": 10
+    }
+]

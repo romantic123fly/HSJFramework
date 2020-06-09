@@ -6,6 +6,21 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/HSJProject/PostersTools/PostersTools.unity
-    guid: 7a3a555470fd44e48b70d317ba41e432
+    path: Assets/HSJExample/CSVTool/CSVScene.unity
+    guid: 8ebb99062f9a1724d9fb3d8b4f0dcdcf
+  - enabled: 1
+    path: Assets/HSJExample/EventTest/EventTest.unity
+    guid: b931afa84070b054a9e9b76aa41482ba
+  - enabled: 1
+    path: Assets/HSJExample/Finder/FindReference.unity
+    guid: 5201dbce3f418a04b8fb0e05ec8e04f0
+  - enabled: 1
+    path: Assets/HSJExample/JsonTool/JsonScene.unity
+    guid: fd841b4f673f65c46a7ccdd839bf2152
+  - enabled: 1
+    path: Assets/Main.unity
+    guid: f7031ddeed3595e4c8c4b62b77cc4018
+  - enabled: 1
+    path: Assets/HSJExample/MySqlDemo/MySqlScene.unity
+    guid: ca052a5de66c4b642b3933d6e365a1ef
   m_configObjects: {}

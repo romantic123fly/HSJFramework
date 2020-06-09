@@ -10,6 +10,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Main : MonoBehaviour
 {
@@ -22,11 +23,9 @@ public class Main : MonoBehaviour
     private void InitController()
     {
         GameObject controller = new GameObject("Controller");
-
         controller.AddComponent<MainViewController>();
         controller.AddComponent<OneViewController>();
         controller.AddComponent<TwoViewController>();
-
         DontDestroyOnLoad(controller);
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
     }
@@ -34,7 +33,7 @@ public class Main : MonoBehaviour
     private void InitManager()
     {
         Debug.Log("当前设备分辨率：" + Screen.width + " X " + Screen.height);
-        UIManager.GetInstance.Init();
+        //UIManager.instance.setup();
     }
 
     private void Update()
@@ -43,5 +42,10 @@ public class Main : MonoBehaviour
         {
             MessageDispatcher.Dispatch(MessagesType.ShowMainView);
         }
+    }
+
+    public void ChangeScene(string name)
+    {
+        SceneManager.LoadScene(name);
     }
 }
