@@ -6,7 +6,7 @@
         "description": "银鳞胸甲，蓝色品质，5G一家",
         "madeby": "神棍德",
         "slug": "天使之翼",
-        "stackavle": false,
+        "stackavle": true,
         "stackMax": 20
     },
     {
@@ -26,7 +26,7 @@
         "description": "我是由布隆创造的",
         "madeby": "布隆",
         "slug": "戒指",
-        "stackavle": false,
+        "stackavle": true,
         "stackMax": 10
     }
 ]

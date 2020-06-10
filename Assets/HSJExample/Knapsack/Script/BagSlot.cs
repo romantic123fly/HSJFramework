@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Slot : MonoBehaviour ,IDropHandler,IPointerEnterHandler, IPointerExitHandler
+public class BagSlot : MonoBehaviour ,IDropHandler,IPointerEnterHandler, IPointerExitHandler
 {
 	public int slotID;//槽位id
 	KnapsackManager inv;
@@ -14,30 +14,30 @@ public class Slot : MonoBehaviour ,IDropHandler,IPointerEnterHandler, IPointerEx
 	}
 
 	public void OnDrop(PointerEventData eventData){
-		KnapsackItem droppenItem = eventData.pointerDrag.GetComponent<KnapsackItem> ();
+		BagItem droppenItem = eventData.pointerDrag.GetComponent<BagItem> ();
 		if (droppenItem==null)
 		{
 			Debug.Log("当前拖拽无效");
 			return;
 		}
-		if (transform.childCount == 0 || inv.itemList[slotID].ID == -1)
+		if (transform.childCount == 0 || inv.itemBagList[slotID].ID == -1)
 		{
 			//把拖拽的item对应的槽位赋值一个新的item
-			inv.itemList[droppenItem.slotIndex] = new ItemData();
+			inv.itemBagList[droppenItem.slotIndex] = new ItemData();
 			droppenItem.slotIndex = slotID;
 			//把拖拽的item赋值给当前落下的槽位
-			inv.itemList[slotID] = droppenItem.itemData;
+			inv.itemBagList[slotID] = droppenItem.itemData;
 		}
 		//交换对象，位置
 		else if (droppenItem.slotIndex != slotID)
 		{
 			Transform item = this.transform.GetChild(0);
-			item.GetComponent<KnapsackItem>().slotIndex = droppenItem.slotIndex;
-			item.transform.SetParent(inv.slotList[droppenItem.slotIndex].transform);
+			item.GetComponent<GoodItem>().slotIndex = droppenItem.slotIndex;
+			item.transform.SetParent(inv.slotBagList[droppenItem.slotIndex].transform);
 			item.transform.position = item.transform.parent.position;
-			inv.itemList[droppenItem.slotIndex] = item.GetComponent<KnapsackItem>().itemData;
+			inv.itemBagList[droppenItem.slotIndex] = item.GetComponent<BagItem>().itemData;
 			droppenItem.slotIndex = slotID;
-			inv.itemList[slotID] = droppenItem.itemData;
+			inv.itemBagList[slotID] = droppenItem.itemData;
 		}
 	}
 	float temp =0.5f;
@@ -50,7 +50,7 @@ public class Slot : MonoBehaviour ,IDropHandler,IPointerEnterHandler, IPointerEx
 			temp -= Time.deltaTime;
 			if (temp <= 0)
 			{
-				string text = inv.GetDescribe(inv.itemList[slotID]);
+				string text = inv.GetDescribe(inv.itemBagList[slotID]);
 				KnapsackManager.GetInstance().ShowToolTilePanel(text);
 				temp = 0.5f;
 			}

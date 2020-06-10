@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 224127747248098450}
   - component: {fileID: 222888083799349992}
   - component: {fileID: 114467359706162402}
-  - component: {fileID: 114854199177312764}
   - component: {fileID: 3798362412025268091}
   - component: {fileID: 1366761286071816032}
   m_Layer: 8
@@ -78,20 +77,6 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
---- !u!114 &114854199177312764
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1061755133532032}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 411352375bd044ce8b8c45a9cf63c8f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slotIndex: 0
-  amount: 1
 --- !u!225 &3798362412025268091
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -158,8 +143,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -11.560001, y: 15.535}
-  m_SizeDelta: {x: 23.120003, y: 31.07}
+  m_AnchoredPosition: {x: -12.9, y: 15.535}
+  m_SizeDelta: {x: 25.8, y: 31.07}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &222231739293980780
 CanvasRenderer:
@@ -191,10 +176,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 27
+    m_FontSize: 20
     m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 1
+    m_MinSize: 0
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -202,4 +187,4 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 3
+  m_Text: 10
