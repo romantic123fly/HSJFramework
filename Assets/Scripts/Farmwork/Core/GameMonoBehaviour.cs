@@ -56,10 +56,11 @@ public abstract class GameMonoBehaviour : MonoBehaviour
 
     public virtual void OnDisable()
     {
-        Destroy(gameObject);
+       
     }
 
     protected virtual void OnDestroy()
     {
+        Destroy(gameObject);
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEditor;
 
 public class UIAutoGenWin : EditorWindow {
-    [MenuItem("HSJ/EditorTools/InitUI")]
+    [MenuItem("HSJ/EditorTools/InitUI_MVC")]
     static void Run() {
         EditorWindow.GetWindow<UIAutoGenWin>();
     }

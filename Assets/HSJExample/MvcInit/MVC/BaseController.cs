@@ -2,7 +2,7 @@
 // **********************************************************************
 // Copyright (C) 2019 Blazors
 // Please contact me if you have any questions
-// File Name:             Main
+// File Name:             BaseController
 // Author:                幻世界
 // QQ:                    853394528 
 // **********************************************************************
@@ -10,12 +10,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class Main : MonoBehaviour
+public class BaseController : MessageHandler
 {
-    public void ChangeScene(string name)
+    public BaseView view;
+    public BaseModel model;
+    protected override void Awake()
     {
-        ScenesManager.Instance.LoadNextScene(name,true);
+        base.Awake();
+    }
+    protected override void Start()
+    {
+
+    }
+
+    protected virtual void InitEvent()
+    {
+
+    }
+
+    public override void HandleMessage(IMessages messages)
+    {
+
     }
 }

@@ -30,6 +30,5 @@ public abstract class BaseManager<T> : Singleton<T>, IMessageHandler where T : B
 
     public void HandleMessage(IMessages messages)
     {
-        throw new System.NotImplementedException();
     }
 }

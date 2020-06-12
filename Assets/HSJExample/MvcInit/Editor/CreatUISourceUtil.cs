@@ -20,11 +20,11 @@ public class CreatUISourceUtil {
     {
         string className = gameObjectName;
         StreamWriter sw = null;
-        if (!Directory.Exists(Application.dataPath + "/Example/MvcInit/UI/" + gameObjectName))
+        if (!Directory.Exists(Application.dataPath + "/HSJExample/MvcInit/" + gameObjectName))
         {
-            Directory.CreateDirectory(Application.dataPath + "/Example/MvcInit/UI/" + gameObjectName);
+            Directory.CreateDirectory(Application.dataPath + "/HSJExample/MvcInit/" + gameObjectName);
         }
-        sw = new StreamWriter(Application.dataPath + "/Example/MvcInit/UI/" + gameObjectName + "/" + className + ".cs");
+        sw = new StreamWriter(Application.dataPath + "/HSJExample/MvcInit/" + gameObjectName + "/" + className + ".cs");
         sw.WriteLine("#region 模块信息");
         sw.WriteLine("// **********************************************************************");
         sw.WriteLine("// Copyright (C) 2019 Blazors");
@@ -52,18 +52,18 @@ public class CreatUISourceUtil {
         sw.Flush();
         sw.Close();
 
-        Debug.Log("Gen: " + Application.dataPath + "/Example/MvcInit/UI/" + gameObjectName + "/" + className + ".cs");
+        Debug.Log("Gen: " + Application.dataPath + "/HSJExample/MvcInit/" + gameObjectName + "/" + className + ".cs");
     }
     private static void CustomController(string gameObjectName)
     {
         string className = gameObjectName + "Controller";
         StreamWriter sw = null;
 
-        if (!Directory.Exists(Application.dataPath + "/Example/MvcInit/UI/" + gameObjectName))
+        if (!Directory.Exists(Application.dataPath + "/HSJExample/MvcInit/" + gameObjectName))
         {
-            Directory.CreateDirectory(Application.dataPath + "/Example/MvcInit/UI/" + gameObjectName);
+            Directory.CreateDirectory(Application.dataPath + "/HSJExample/MvcInit/" + gameObjectName);
         }
-        sw = new StreamWriter(Application.dataPath + "/Example/MvcInit/UI/" + gameObjectName + "/" + className + ".cs");
+        sw = new StreamWriter(Application.dataPath + "/HSJExample/MvcInit/" + gameObjectName + "/" + className + ".cs");
         sw.WriteLine("#region 模块信息");
         sw.WriteLine("// **********************************************************************");
         sw.WriteLine("// Copyright (C) 2019 Blazors");
@@ -89,17 +89,17 @@ public class CreatUISourceUtil {
         sw.Flush();
         sw.Close();
 
-        Debug.Log("Gen: " + Application.dataPath + "/Example/MvcInit/UI/" + gameObjectName + "/" + className + ".cs");
+        Debug.Log("Gen: " + Application.dataPath + "/HSJExample/MvcInit/" + gameObjectName + "/" + className + ".cs");
     }
     private static void CustomModel(string gameObjectName)
     {
         string className = gameObjectName + "Model";
         StreamWriter sw = null;
-        if (!Directory.Exists(Application.dataPath + "/Example/MvcInit/UI/" + gameObjectName))
+        if (!Directory.Exists(Application.dataPath + "/HSJExample/MvcInit/" + gameObjectName))
         {
-            Directory.CreateDirectory(Application.dataPath + "/Example/MvcInit/UI/" + gameObjectName);
+            Directory.CreateDirectory(Application.dataPath + "/HSJExample/MvcInit/" + gameObjectName);
         }
-        sw = new StreamWriter(Application.dataPath + "/Example/MvcInit/UI/" + gameObjectName + "/" + className + ".cs");
+        sw = new StreamWriter(Application.dataPath + "/HSJExample/MvcInit/" + gameObjectName + "/" + className + ".cs");
         sw.WriteLine("#region 模块信息");
         sw.WriteLine("// **********************************************************************");
         sw.WriteLine("// Copyright (C) 2019 Blazors");
@@ -111,11 +111,11 @@ public class CreatUISourceUtil {
 
         sw.WriteLine("using UnityEngine;\nusing System.Collections;\nusing UnityEngine.UI;\nusing System.Collections.Generic;");
 
-        sw.WriteLine("public class " + className + "{"+ "\n");
+        sw.WriteLine("public class " + className + " : BaseModel {" + "\n");
         sw.WriteLine("}");
         sw.Flush();
         sw.Close();
 
-        Debug.Log("Gen: " + Application.dataPath + "/Example/MvcInit/UI/" + gameObjectName + "/" + className + ".cs");
+        Debug.Log("Gen: " + Application.dataPath + "/HSJExample/MvcInit/" + gameObjectName + "/" + className + ".cs");
     }
 }

@@ -10,9 +10,9 @@
     private void initManager()
     {
         //NetworkManager.instance.setup();
-        TimeManager.instance.setup();
+        TimeManager.Instance.setup();
         //LevelManager.instance.setup();
-        PoolManager.instance.setup();
+        PoolManager.Instance.setup();
         //InputManager.instance.setup();
         //ItemManager.instance.setup();
         //SkillManager.instance.setup();
