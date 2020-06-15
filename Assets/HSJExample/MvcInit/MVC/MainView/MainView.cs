@@ -57,6 +57,7 @@ public class MainView : BaseView
 		base.Render();
 
 	}
+	//按钮名字对应场景名
 	private void ButtonOnClick(string btnName)
 	{
 		ScenesManager.Instance.LoadNextScene(btnName, true,()=> {
