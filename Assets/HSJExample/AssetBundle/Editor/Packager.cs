@@ -6,7 +6,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System;
-using System.Diagnostics;
 
 public class Packager
 {
@@ -14,30 +13,18 @@ public class Packager
     static List<string> paths = new List<string>();
     static List<string> files = new List<string>();
 
-    [MenuItem("HSJ/EditorTools/BuildAB/IOSResource", false, 1)]
+    [MenuItem("HSJ/打AB包/方式二")]
     public static void BuildiPhoneResource()
     {
         BuildTarget target;
         target = BuildTarget.iOS;
-        BuildAssetResource(target, false);
-    }
-
-    [MenuItem("HSJ/EditorTools/BuildAB/AndroidResource",false ,2)]
-    public static void BuildAndroidResource()
-    {
-        BuildAssetResource(BuildTarget.Android, true);
-    }
-
-    [MenuItem("HSJ/EditorTools/BuildAB/WindowsResource", false, 3)]
-    public static void BuildWindowsResource()
-    {
-        BuildAssetResource(BuildTarget.StandaloneWindows, true);
+        BuildAssetResource(EditorUserBuildSettings.activeBuildTarget);
     }
 
     /// <summary>
     /// 生成绑定素材
     /// </summary>
-    public static void BuildAssetResource(BuildTarget target, bool isWin)
+    public static void BuildAssetResource(BuildTarget target)
     {
         try
         {

@@ -16,6 +16,7 @@ public class MVCMain : MonoBehaviour
     private void Awake()
     {
         DontDestroyOnLoad(this);
+        PlatformDefines();
         InitManager();
         InitController();
         MessageDispatcher.Dispatch(MessagesType.ShowMainView);
@@ -42,4 +43,33 @@ public class MVCMain : MonoBehaviour
         }
     }
 
+    void PlatformDefines()
+    {
+#if UNITY_EDITOR
+        Debug.Log("UNITY_EDITOR");
+#endif
+#if UNITY_EDITOR_WIN
+        Debug.Log("UNITY_EDITOR_WIN");
+#endif
+#if UNITY_EDITOR_OSX
+            Debug.Log("UNITY_EDITOR_OSX");
+#endif
+
+#if UNITY_IOS
+            Debug.Log("UNITY_IPHONE");
+#endif
+
+#if UNITY_ANDROID
+            Debug.Log("UNITY_ANDROID");
+#endif
+
+#if UNITY_STANDALONE_OSX
+        Debug.Log("UNITY_STANDALONE_OSX");
+#endif
+
+#if UNITY_STANDALONE_WIN
+        Debug.Log("UNITY_STANDALONE_WIN");
+#endif
+    }
 }
+

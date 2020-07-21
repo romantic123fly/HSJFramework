@@ -9,12 +9,12 @@ using System.IO;
 public class MyTool
 {
     //一系列批量build的操作
-    [MenuItem("HSJ/EditorTools/Package/BuildAndroid")]
+    [MenuItem("HSJ/Package/BuildAndroid")]
     static void PerformAndroidPadBuild()
     {
         BulidTarget("HSJFramework", "Android");
     }
-    [MenuItem("HSJ/EditorTools/Package/BuildIOS")]
+    [MenuItem("HSJ/Package/BuildIOS")]
     static void PerformAndroidVRBuild()
     {
         BulidTarget("HSJFramework", "IOS");

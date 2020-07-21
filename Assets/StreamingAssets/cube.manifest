@@ -1,0 +1,44 @@
+ManifestFileVersion: 0
+CRC: 941345806
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: c4bd7107debf47191da9e071db3af1e9
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 28725d0652dfda4b32fde4a891e66ed7
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 65
+  Script: {instanceID: 0}
+- Class: 82
+  Script: {instanceID: 0}
+- Class: 83
+  Script: {instanceID: 0}
+- Class: 135
+  Script: {instanceID: 0}
+- Class: 136
+  Script: {instanceID: 0}
+Assets:
+- Assets/HSJExample/AssetBundle/Prefabs/Cube.prefab
+- Assets/HSJExample/AssetBundle/Model/2.mat
+- Assets/HSJExample/AssetBundle/Model/2.png
+Dependencies:
+- F:/GitHubProject/HSJFramework.git/trunk/Assets/StreamingAssets/audio
+- F:/GitHubProject/HSJFramework.git/trunk/Assets/StreamingAssets/shader

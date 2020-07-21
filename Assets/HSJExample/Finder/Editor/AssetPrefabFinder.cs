@@ -24,7 +24,7 @@ public class AssetPrefabFinder : EditorWindow
     int loopCount = 0;
     List<Transform> results = new List<Transform>();
 
-    [MenuItem("HSJ/EditorTools/Finder/AssetFinder")]
+    [MenuItem("HSJ/Finder/AssetFinder")]
     static void Execute()
     {
         if (window == null)

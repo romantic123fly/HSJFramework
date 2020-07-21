@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AssetBundleConfig xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <ABList Path="Assets/HSJExample/AssetBundle/Audios/a1.mp3" Crc="2106957422" ABName="audio" AssetName="a1.mp3" AbDependce="" />
+  <ABList Path="Assets/HSJExample/AssetBundle/Audios/a2.mp3" Crc="976610494" ABName="audio" AssetName="a2.mp3" AbDependce="" />
+  <ABList Path="Assets/HSJExample/AssetBundle/Model/2.mat" Crc="3171170029" ABName="cube" AssetName="2.mat" AbDependce="shader" />
+  <ABList Path="Assets/HSJExample/AssetBundle/Model/2.png" Crc="2866568159" ABName="cube" AssetName="2.png" AbDependce="" />
+  <ABList Path="Assets/HSJExample/AssetBundle/Prefabs/Cube.prefab" Crc="1447706987" ABName="cube" AssetName="Cube.prefab" AbDependce="shader audio" />
+  <ABList Path="Assets/HSJExample/AssetBundle/Model/changjinglu.mat" Crc="812375087" ABName="giraffe" AssetName="changjinglu.mat" AbDependce="shader" />
+  <ABList Path="Assets/HSJExample/AssetBundle/Model/changjinglu.tga" Crc="404424637" ABName="giraffe" AssetName="changjinglu.tga" AbDependce="" />
+  <ABList Path="Assets/HSJExample/AssetBundle/Model/Giraffe.FBX" Crc="466367910" ABName="giraffe" AssetName="Giraffe.FBX" AbDependce="" />
+  <ABList Path="Assets/HSJExample/AssetBundle/Model/zajiqiu1-2.mat" Crc="2910713561" ABName="giraffe" AssetName="zajiqiu1-2.mat" AbDependce="shader" />
+  <ABList Path="Assets/HSJExample/AssetBundle/Model/zajiqiu1-2.tga" Crc="2232233291" ABName="giraffe" AssetName="zajiqiu1-2.tga" AbDependce="" />
+  <ABList Path="Assets/HSJExample/AssetBundle/Model/zajiqiu3-4.tga" Crc="2647837122" ABName="giraffe" AssetName="zajiqiu3-4.tga" AbDependce="" />
+  <ABList Path="Assets/HSJExample/AssetBundle/Prefabs/Giraffe.prefab" Crc="3517290872" ABName="giraffe" AssetName="Giraffe.prefab" AbDependce="shader audio" />
+  <ABList Path="Assets/HSJExample/AssetBundle/Shaders/Fade.shader" Crc="2762840696" ABName="shader" AssetName="Fade.shader" AbDependce="" />
+  <ABList Path="Assets/HSJExample/AssetBundle/Shaders/FillColor.shader" Crc="2596862008" ABName="shader" AssetName="FillColor.shader" AbDependce="" />
+  <ABList Path="Assets/HSJExample/AssetBundle/Shaders/Hidden-Spine-Bones.shader" Crc="4053577287" ABName="shader" AssetName="Hidden-Spine-Bones.shader" AbDependce="" />
+</AssetBundleConfig>

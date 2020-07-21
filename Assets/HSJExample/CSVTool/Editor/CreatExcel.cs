@@ -8,7 +8,7 @@ public class CreatExcel : EditorWindow
 {
     private static string path = "/HSJExample/CSVTool/Scripts/GameConfig/";
     private static Object selectObject;
-    [MenuItem("HSJ/EditorTools/CreatCSV_C#")]
+    [MenuItem("HSJ/CreatCSV_C#")]
     public static void Create()
     {
         CreatExcel window = GetWindow<CreatExcel>();

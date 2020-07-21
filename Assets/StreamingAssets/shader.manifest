@@ -1,0 +1,18 @@
+ManifestFileVersion: 0
+CRC: 3267593209
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 50c1da9cbcb6936e1b46616964451b27
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 7e9ee104d6bb707fb2602b751e6f78b1
+HashAppended: 0
+ClassTypes:
+- Class: 48
+  Script: {instanceID: 0}
+Assets:
+- Assets/HSJExample/AssetBundle/Shaders/FillColor.shader
+- Assets/HSJExample/AssetBundle/Shaders/Hidden-Spine-Bones.shader
+- Assets/HSJExample/AssetBundle/Shaders/Fade.shader
+Dependencies: []

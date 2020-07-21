@@ -21,7 +21,7 @@ public class SceneFinder : EditorWindow
 
     List<Transform> results = new List<Transform>();
 
-    [MenuItem("HSJ/EditorTools/Finder/SceneFinder")]
+    [MenuItem("HSJ/Finder/SceneFinder")]
     static void Init()
     {
         EditorWindow.GetWindow(typeof(SceneFinder));
