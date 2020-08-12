@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <AssetBundleConfig xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <ABList Path="Assets/HSJExample/AssetBundle/Data/AssetBundleConfig.bytes" Crc="1314641651" ABName="assetbundleconfig" AssetName="AssetBundleConfig.bytes" AbDependce="" />
   <ABList Path="Assets/HSJExample/AssetBundle/Audios/a1.mp3" Crc="2106957422" ABName="audio" AssetName="a1.mp3" AbDependce="" />
   <ABList Path="Assets/HSJExample/AssetBundle/Audios/a2.mp3" Crc="976610494" ABName="audio" AssetName="a2.mp3" AbDependce="" />
   <ABList Path="Assets/HSJExample/AssetBundle/Model/2.mat" Crc="3171170029" ABName="cube" AssetName="2.mat" AbDependce="shader" />

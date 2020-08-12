@@ -37,6 +37,7 @@ public class BundleEditor
             AssetDatabase.RemoveAssetBundleName(oldABNames[i], true);
             EditorUtility.DisplayProgressBar("清除Ab包名", "名字：" + oldABNames[i], i / oldABNames.Length);
         }
+        EditorUtility.ClearProgressBar();
     }
     
 
@@ -47,6 +48,7 @@ public class BundleEditor
         m_AllPrefabDir.Clear();
         m_AllFileAB.Clear();
         m_UsefulABList.Clear();
+
         ABConfig abConfig = AssetDatabase.LoadAssetAtPath<ABConfig>(AbConfigPath);
         foreach (var item in abConfig.m_AllFileDirAB)
         {
@@ -206,17 +208,18 @@ public class BundleEditor
         //写入XML
         string xmlPath = Application.dataPath + "/HSJExample/AssetBundle/ABConfig.Xml";
         if (File.Exists(xmlPath)) File.Delete(xmlPath);
-        FileStream fileStream = new FileStream(xmlPath,FileMode.Create,FileAccess.ReadWrite,FileShare.ReadWrite);
-        StreamWriter streamWriter = new StreamWriter(fileStream,System.Text.Encoding.UTF8);
+        FileStream fileStream = new FileStream(xmlPath, FileMode.Create, FileAccess.ReadWrite, FileShare.ReadWrite);
+        StreamWriter streamWriter = new StreamWriter(fileStream, System.Text.Encoding.UTF8);
         XmlSerializer xs = new XmlSerializer(assetBundleConfig.GetType());
         xs.Serialize(streamWriter, assetBundleConfig);
         streamWriter.Close();
         fileStream.Close();
-        //写入二进制
-        string bytePath = AbTargetPath + "/AssetBundleConfig.bytes";
+        //写入二进
+        string bytePath = Application.dataPath +"/HSJExample/AssetBundle/Data/AssetBundleConfig.bytes";
         FileStream fileStream1 = new FileStream(bytePath, FileMode.Create, FileAccess.ReadWrite, FileShare.ReadWrite);
-        BinaryFormatter bf = new BinaryFormatter();
-        bf.Serialize(fileStream1, assetBundleConfig.GetType());
+        BinaryFormatter bf = new BinaryFormatter();  
+        bf.Serialize(fileStream1, assetBundleConfig);
+        Debug.Log(fileStream1.Length);
         fileStream1.Close();
     }
     //删掉冗余的ab包

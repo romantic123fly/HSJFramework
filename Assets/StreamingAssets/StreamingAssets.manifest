@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 1483645069
+CRC: 1319457287
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -9,11 +9,14 @@ AssetBundleManifest:
       Name: shader
       Dependencies: {}
     Info_2:
+      Name: assetbundleconfig
+      Dependencies: {}
+    Info_3:
       Name: cube
       Dependencies:
         Dependency_0: audio
         Dependency_1: shader
-    Info_3:
+    Info_4:
       Name: giraffe
       Dependencies:
         Dependency_0: audio

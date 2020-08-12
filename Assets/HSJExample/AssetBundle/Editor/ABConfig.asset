@@ -19,3 +19,5 @@ MonoBehaviour:
     Path: Assets/HSJExample/AssetBundle/Audios
   - ABName: shader
     Path: Assets/HSJExample/AssetBundle/Shaders
+  - ABName: assetbundleconfig
+    Path: Assets/HSJExample/AssetBundle/Data
