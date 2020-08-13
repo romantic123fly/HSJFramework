@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 882275306
+CRC: 2462320192
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 0e56bf7a3514ac6182efc3a9baa6c905
+    Hash: c31541a92629672c0072c731a2446b65
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 9e20e1266b602413894db0ac5d02bcc0
+    Hash: 17649485ebeac7f8c971c8428f9a5cd8
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -17,24 +17,21 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 23
   Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
 - Class: 33
   Script: {instanceID: 0}
 - Class: 43
   Script: {instanceID: 0}
 - Class: 48
   Script: {instanceID: 0}
-- Class: 65
+- Class: 90
   Script: {instanceID: 0}
-- Class: 82
+- Class: 95
   Script: {instanceID: 0}
-- Class: 83
-  Script: {instanceID: 0}
-- Class: 135
-  Script: {instanceID: 0}
-- Class: 136
+- Class: 137
   Script: {instanceID: 0}
 Assets:
-- Assets/HSJExample/AssetBundle/Prefabs/Cube.prefab
+- Assets/HSJExample/AssetBundle/Model/Giraffe.FBX
 Dependencies:
-- F:/GitHubProject/HSJFramework.git/trunk/Assets/StreamingAssets/audio
-- F:/GitHubProject/HSJFramework.git/trunk/Assets/StreamingAssets/materials
+- F:/GitHubProject/HSJFramework.git/trunk/Assets/StreamingAssets/texture

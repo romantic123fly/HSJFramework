@@ -35,7 +35,9 @@ public class LoadAB : MonoBehaviour
         BinaryFormatter bf = new BinaryFormatter();
         AssetBundleConfig abc = bf.Deserialize(stream) as AssetBundleConfig;
         stream.Close();
-        string path = "Assets/HSJExample/AssetBundle/Prefabs/Cube.prefab";
+
+
+        string path = "Assets/HSJExample/AssetBundle/Prefabs/Giraffe.prefab";
         uint crc = Crc32.GetCRC32(path);
         Debug.Log(crc);
         ABBase abBase = null;
@@ -53,6 +55,6 @@ public class LoadAB : MonoBehaviour
         }
 
         AssetBundle assetBundle = AssetBundle.LoadFromFile(Application.streamingAssetsPath+"/"+abBase.ABName);
-        GameObject obj = Instantiate(assetBundle.LoadAsset<GameObject>("Cube"));
+        GameObject obj = Instantiate(assetBundle.LoadAsset<GameObject>("Giraffe"));
     }
 }

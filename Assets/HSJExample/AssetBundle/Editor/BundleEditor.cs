@@ -37,6 +37,9 @@ public class BundleEditor
             AssetDatabase.RemoveAssetBundleName(oldABNames[i], true);
             EditorUtility.DisplayProgressBar("清除Ab包名", "名字：" + oldABNames[i], i / oldABNames.Length);
         }
+
+        Directory.Delete(Application.streamingAssetsPath, true);
+        AssetDatabase.Refresh();
         EditorUtility.ClearProgressBar();
     }
     
@@ -165,7 +168,11 @@ public class BundleEditor
                     Debug.Log("ab包："+allBundles[i]+"包含的资源文件路径："+allBundlePath[j]);
             }
         }
-        DeletUselessAB();
+        if (!Directory.Exists(AbTargetPath))
+        {
+            Directory.CreateDirectory(AbTargetPath);
+        }
+        //DeletUselessAB();
         //生成自己的配置表
         WriteData(resPathDic);
         BuildPipeline.BuildAssetBundles(AbTargetPath, BuildAssetBundleOptions.ChunkBasedCompression,EditorUserBuildSettings.activeBuildTarget);
@@ -227,6 +234,7 @@ public class BundleEditor
     {
         //获取到所有的ab包名字
         string[] allBundlesName = AssetDatabase.GetAllAssetBundleNames();
+      
         DirectoryInfo directoryInfo = new DirectoryInfo(AbTargetPath);
         FileInfo[] files = directoryInfo.GetFiles("*",SearchOption.AllDirectories);
 

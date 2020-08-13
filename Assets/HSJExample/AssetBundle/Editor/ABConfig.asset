@@ -21,3 +21,9 @@ MonoBehaviour:
     Path: Assets/HSJExample/AssetBundle/Shaders
   - ABName: assetbundleconfig
     Path: Assets/HSJExample/AssetBundle/Data
+  - ABName: materials
+    Path: Assets/HSJExample/AssetBundle/Materials
+  - ABName: texture
+    Path: Assets/HSJExample/AssetBundle/Texture
+  - ABName: model
+    Path: Assets/HSJExample/AssetBundle/Model

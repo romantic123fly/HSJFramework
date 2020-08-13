@@ -11,7 +11,6 @@ using UnityEngine;
 public abstract class Singleton<T> : GameMonoBehaviour where T : Singleton<T>
 {
     //泛型单例约束
-
     private static GameObject _container;
 
     protected static T _instance = null;
