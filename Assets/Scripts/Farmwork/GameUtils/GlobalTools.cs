@@ -89,7 +89,7 @@ public static class GlobalTools
         return pwd.ToString();
     }
     // 计算字符串的MD5值
-    public static string md5(string source)
+    public static string Md5String(string source)
     {
         MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
         byte[] data = System.Text.Encoding.UTF8.GetBytes(source);
@@ -105,7 +105,7 @@ public static class GlobalTools
         return destString;
     }
     // 计算文件的MD5值
-    public static string md5file(string file)
+    public static string Md5File(string file)
     {
         try
         {
