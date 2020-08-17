@@ -16,7 +16,7 @@ using System.Xml.Serialization;
 using UnityEditor;
 using UnityEngine;
 
-public class BundleEditor 
+public class BuildAssetBundleTypeOne
 {
     private static string AbTargetPath = Application.streamingAssetsPath;
     private static string AbConfigPath = "Assets/HSJExample/AssetBundle/Editor/ABConfig.asset";

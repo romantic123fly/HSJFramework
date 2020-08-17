@@ -14,6 +14,7 @@ using UnityEngine;
 
 public class ObjectManager : BaseManager<ObjectManager>
 {
+
     protected Dictionary<Type, object> m_ClassPoolDic = new Dictionary<Type, object>();
     /// <summary>
     /// 创建类的对象池，之后在外面可以保存ClassObjectPool<T>,然后可以调用Spaw和Recycle方法
@@ -33,15 +34,4 @@ public class ObjectManager : BaseManager<ObjectManager>
         }
         return outObj as ClassObjectPool<T>;
     }
-
-    public T NewClassObjectFromPool<T>(int maxCount) where T:class,new()
-    {
-        ClassObjectPool<T> pool = GetOrCreatClassPool<T>(maxCount);
-        if (pool ==null)
-        {
-            return null;
-        }
-        return pool.Spawn(true);
-    }
-
 }

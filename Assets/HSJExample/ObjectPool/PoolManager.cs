@@ -17,9 +17,9 @@ public class PoolManager : BaseManager<PoolManager>
     // 存储动可重用的GameObject。
     public  List<GameObject> _objectList = new List<GameObject>();
     // 对象池大小
-    private int _capacity = 100;
+    private int _capacity = 5;
 
-    // 在dormantObjects获取与go类型相同的GameObject,如果没有则new一个。
+    // 在Objects获取与go类型相同的GameObject,如果没有则new一个。
     public GameObject Spawn(GameObject go)
     {
         GameObject temp = null;
@@ -52,11 +52,11 @@ public class PoolManager : BaseManager<PoolManager>
         go.transform.SetParent(transform);
         go.SetActive(false);
         _objectList.Add(go);
-        trim();
+        Trim();
     }
 
     //FIFO 如果dormantObjects大于最大个数则将之前的GameObject都推出来。
-    public void trim()
+    public void Trim()
     {
         while (_objectList.Count > _capacity)
         {
@@ -64,22 +64,5 @@ public class PoolManager : BaseManager<PoolManager>
             _objectList.RemoveAt(0);
             Destroy(temp);
         }
-    }
-
-    protected override void Update()
-    {
-        base.Update();
-        if (Input.GetKeyDown(KeyCode.F3))
-        {
-            //测试对象池机制   
-            var go = GameObject.Find("Cube");
-            var go1 = Spawn(go);
-            StartCoroutine(Recovery(go1));
-        }
-    }
-    IEnumerator Recovery(GameObject go)
-    {
-        yield return new WaitForSeconds(5);
-        Despawn(go);
     }
 }

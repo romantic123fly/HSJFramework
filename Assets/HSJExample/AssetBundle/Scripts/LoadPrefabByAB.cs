@@ -13,29 +13,34 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
-public class LoadAB : MonoBehaviour
+public class LoadPrefabByAB : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
     {
-        LoadAssetBundle();
+        //第一种方式
+        //LoadAssetBundle();
+        //第二种方式
+
+        ResourceManager.Instance.CheckExtractResource();
+
+
+        var bundle = ResourceManager.Instance.LoadAssetBundle("prefabs/giraffe");
+        Instantiate(bundle.LoadAsset<GameObject>("giraffe"));
     }
 
     // Update is called once per frame
     void LoadAssetBundle()
     {
+        //加载ab包信息配置列表
         AssetBundle configAB = AssetBundle.LoadFromFile( Application.streamingAssetsPath + "/assetbundleconfig");
-        foreach (var item in configAB.GetAllAssetNames())
-        {
-            Debug.Log(item);
-        }
+     
         TextAsset textAsset = configAB.LoadAsset<TextAsset>("AssetBundleConfig");
         Debug.Log(textAsset.bytes.Length);
         MemoryStream stream = new MemoryStream(textAsset.bytes);
         BinaryFormatter bf = new BinaryFormatter();
         AssetBundleConfig abc = bf.Deserialize(stream) as AssetBundleConfig;
         stream.Close();
-
 
         string path = "Assets/HSJExample/AssetBundle/Prefabs/Giraffe.prefab";
         uint crc = Crc32.GetCRC32(path);
