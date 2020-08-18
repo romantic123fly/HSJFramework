@@ -68,7 +68,7 @@ public class BuildAssetBundleTypeTwo
     //设置ab名字
     public static void SetAssetbundleName()
     {
-        string[] abPath = new string[] { "Prefabs", "Audios", "Materials", "Model", "Shaders", "Texture" };
+        string[] abPath = new string[] { "Prefabs", "Materials", "Model", "Shaders", "Texture" };
         string rootPath = Application.dataPath + "/HSJExample/AssetBundle/";
         string abName = string.Empty;
         List<string> filePaths = new List<string>();

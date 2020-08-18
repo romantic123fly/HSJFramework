@@ -9,9 +9,11 @@
 #endregion
 
 using SimpleFramework.Manager;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 
 public class ResourceManager:BaseManager<ResourceManager>
@@ -241,6 +243,7 @@ public class ResourceManager:BaseManager<ResourceManager>
         if (Directory.Exists(GameDefine.GetAbDataPath()) && File.Exists(GameDefine.GetAbDataPath() + "files.txt"))
         {
             //需检查版本号是否需要更新
+            StartCoroutine(OnUpdateResource());
             Initialize();
         }
         else//如果游戏资源未释放到本地就需钥执行释放资源的操作
@@ -322,7 +325,7 @@ public class ResourceManager:BaseManager<ResourceManager>
         Initialize();
 
         //释放完成，开始启动更新资源
-        //StartCoroutine(OnUpdateResource());
+        StartCoroutine(OnUpdateResource());
     }
 
     /// <summary>
@@ -332,9 +335,8 @@ public class ResourceManager:BaseManager<ResourceManager>
     {
 
         string dataPath = GameDefine.GetAbDataPath();  //数据目录
-        string url ="www.hsj.com";
-        Debug.Log("///////////////////////////////////////" + url);
-        string message = string.Empty;
+        string url =Application.streamingAssetsPath+"/";
+        Debug.Log("新版本资源路径：" + url);
         //string random = DateTime.Now.ToString("yyyymmddhhmmss");
         string listUrl = url + "files.txt";
         Debug.LogWarning("LoadUpdate---->>>" + listUrl);
@@ -342,7 +344,7 @@ public class ResourceManager:BaseManager<ResourceManager>
         WWW www = new WWW(listUrl); yield return www;
         if (www.error != null)
         {
-            OnUpdateFailed(string.Empty);
+            Debug.Log("更新失败!!");
             yield break;
         }
         if (!Directory.Exists(dataPath))
@@ -352,10 +354,9 @@ public class ResourceManager:BaseManager<ResourceManager>
         File.WriteAllBytes(dataPath + "files.txt", www.bytes);
         string filesText = www.text;
         string[] files = filesText.Split('\n');
-      
+
         for (int i = 0; i < files.Length; i++)
         {
-      
             if (string.IsNullOrEmpty(files[i])) continue;
             string[] keyValue = files[i].Split('|');
             string f = keyValue[0];
@@ -376,39 +377,27 @@ public class ResourceManager:BaseManager<ResourceManager>
             }
             if (canUpdate)
             {   //本地缺少文件
-                Debug.Log(fileUrl);
-                message = "downloading>>" + fileUrl;
+                Debug.LogError("正在更新文件：" + fileUrl);
                 //facade.SendMessageCommand(NotiConst.UPDATE_MESSAGE, message);
 
                 //这里都是资源文件，用线程下载
                 BeginDownload(fileUrl, localfile);
-                while (!(IsDownOK(localfile))) { yield return new WaitForEndOfFrame(); }
+                while (!DownloadFiles.Contains(localfile))
+                { yield return new WaitForEndOfFrame(); }
             }
+            Debug.Log("更新进度：" + Math.Round((float)i / (files.Length - 1), 2));
         }
-       
+        Debug.Log("更新完成!!");
         yield return new WaitForSeconds(2f);
-    }
-
-    void OnUpdateFailed(string file)
-    {
-        Debug.Log("更新失败!!");
-    }
-
-    /// <summary>
-    /// 是否下载完成
-    /// </summary>
-    bool IsDownOK(string file)
-    {
-        return DownloadFiles.Contains(file);
     }
 
     /// <summary>
     /// 线程下载
     /// </summary>
     void BeginDownload(string url, string file)
-    {     //线程下载
+    {
+        //线程下载
         object[] param = new object[2] { url, file };
-
         ThreadEvent ev = new ThreadEvent();
         ev.Key = MessageTypes.UPDATE_DOWNLOAD;
         ev.evParams.AddRange(param);
@@ -426,11 +415,10 @@ public class ResourceManager:BaseManager<ResourceManager>
         {
             case MessageTypes.UPDATE_EXTRACT:  //解压一个完成
                 
-                Debug.Log(data.evParam.ToString());
                 break;
             case MessageTypes.UPDATE_DOWNLOAD: //下载一个完成
                 DownloadFiles.Add(data.evParam.ToString());
-                Debug.Log(data.evParam.ToString());
+                Debug.LogError("更新完成："+data.evParam.ToString());
                 break;
         }
     }

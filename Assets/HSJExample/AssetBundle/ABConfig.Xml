@@ -3,19 +3,21 @@
   <ABList Path="Assets/HSJExample/AssetBundle/Data/AssetBundleConfig.bytes" Crc="1314641651" ABName="assetbundleconfig" AssetName="AssetBundleConfig.bytes" AbDependce="" />
   <ABList Path="Assets/HSJExample/AssetBundle/Audios/a1.mp3" Crc="2106957422" ABName="audio" AssetName="a1.mp3" AbDependce="" />
   <ABList Path="Assets/HSJExample/AssetBundle/Audios/a2.mp3" Crc="976610494" ABName="audio" AssetName="a2.mp3" AbDependce="" />
-  <ABList Path="Assets/HSJExample/AssetBundle/Prefabs/Cube.prefab" Crc="1447706987" ABName="cube" AssetName="Cube.prefab" AbDependce="shader materials texture audio" />
-  <ABList Path="Assets/HSJExample/AssetBundle/Prefabs/Giraffe.prefab" Crc="3517290872" ABName="giraffe" AssetName="Giraffe.prefab" AbDependce="shader materials texture model audio" />
-  <ABList Path="Assets/HSJExample/AssetBundle/Materials/2.mat" Crc="985155686" ABName="materials" AssetName="2.mat" AbDependce="shader texture" />
-  <ABList Path="Assets/HSJExample/AssetBundle/Materials/changjinglu.mat" Crc="3657900298" ABName="materials" AssetName="changjinglu.mat" AbDependce="texture shader" />
-  <ABList Path="Assets/HSJExample/AssetBundle/Materials/zajiqiu1-2.mat" Crc="348645981" ABName="materials" AssetName="zajiqiu1-2.mat" AbDependce="shader" />
-  <ABList Path="Assets/HSJExample/AssetBundle/Materials/zajiqiu3-4.mat" Crc="202903252" ABName="materials" AssetName="zajiqiu3-4.mat" AbDependce="" />
-  <ABList Path="Assets/HSJExample/AssetBundle/Model/Giraffe.FBX" Crc="466367910" ABName="model" AssetName="Giraffe.FBX" AbDependce="texture" />
-  <ABList Path="Assets/HSJExample/AssetBundle/Shaders/Fade.shader" Crc="2762840696" ABName="shader" AssetName="Fade.shader" AbDependce="" />
-  <ABList Path="Assets/HSJExample/AssetBundle/Shaders/FillColor.shader" Crc="2596862008" ABName="shader" AssetName="FillColor.shader" AbDependce="" />
-  <ABList Path="Assets/HSJExample/AssetBundle/Shaders/Hsj.shader" Crc="4201023642" ABName="shader" AssetName="Hsj.shader" AbDependce="" />
-  <ABList Path="Assets/HSJExample/AssetBundle/Texture/1.png" Crc="583870788" ABName="texture" AssetName="1.png" AbDependce="" />
-  <ABList Path="Assets/HSJExample/AssetBundle/Texture/2.png" Crc="1701663636" ABName="texture" AssetName="2.png" AbDependce="" />
-  <ABList Path="Assets/HSJExample/AssetBundle/Texture/changjinglu.tga" Crc="3851444393" ABName="texture" AssetName="changjinglu.tga" AbDependce="" />
-  <ABList Path="Assets/HSJExample/AssetBundle/Texture/zajiqiu1-2.tga" Crc="1821590353" ABName="texture" AssetName="zajiqiu1-2.tga" AbDependce="" />
-  <ABList Path="Assets/HSJExample/AssetBundle/Texture/zajiqiu3-4.tga" Crc="1951180760" ABName="texture" AssetName="zajiqiu3-4.tga" AbDependce="" />
+  <ABList Path="Assets/HSJExample/AssetBundle/Animation/cube.anim" Crc="864195249" ABName="cube" AssetName="cube.anim" AbDependce="" />
+  <ABList Path="Assets/HSJExample/AssetBundle/Animation/Cube.controller" Crc="34841541" ABName="cube" AssetName="Cube.controller" AbDependce="" />
+  <ABList Path="Assets/HSJExample/AssetBundle/Prefabs/Cube.prefab" Crc="1447706987" ABName="cube" AssetName="Cube.prefab" AbDependce="shaders/fillcolor.assetbundle materials/2.assetbundle texture/2.assetbundle audio" />
+  <ABList Path="Assets/HSJExample/AssetBundle/Prefabs/Giraffe.prefab" Crc="3517290872" ABName="giraffe" AssetName="Giraffe.prefab" AbDependce="shaders/fillcolor.assetbundle materials/changjinglu.assetbundle texture/zajiqiu3-4.assetbundle materials/zajiqiu1-2.assetbundle texture/zajiqiu1-2.assetbundle texture/changjinglu.assetbundle shaders/hsj.assetbundle model/giraffe.assetbundle audio" />
+  <ABList Path="Assets/HSJExample/AssetBundle/Materials/2.mat" Crc="985155686" ABName="materials/2.assetbundle" AssetName="2.mat" AbDependce="shaders/fillcolor.assetbundle texture/2.assetbundle" />
+  <ABList Path="Assets/HSJExample/AssetBundle/Materials/changjinglu.mat" Crc="3657900298" ABName="materials/changjinglu.assetbundle" AssetName="changjinglu.mat" AbDependce="texture/zajiqiu1-2.assetbundle shaders/hsj.assetbundle" />
+  <ABList Path="Assets/HSJExample/AssetBundle/Materials/zajiqiu1-2.mat" Crc="348645981" ABName="materials/zajiqiu1-2.assetbundle" AssetName="zajiqiu1-2.mat" AbDependce="shaders/fillcolor.assetbundle" />
+  <ABList Path="Assets/HSJExample/AssetBundle/Materials/zajiqiu3-4.mat" Crc="202903252" ABName="materials/zajiqiu3-4.assetbundle" AssetName="zajiqiu3-4.mat" AbDependce="" />
+  <ABList Path="Assets/HSJExample/AssetBundle/Model/Giraffe.FBX" Crc="466367910" ABName="model/giraffe.assetbundle" AssetName="Giraffe.FBX" AbDependce="texture/zajiqiu3-4.assetbundle texture/zajiqiu1-2.assetbundle texture/changjinglu.assetbundle" />
+  <ABList Path="Assets/HSJExample/AssetBundle/Shaders/Fade.shader" Crc="2762840696" ABName="shaders/fade.assetbundle" AssetName="Fade.shader" AbDependce="" />
+  <ABList Path="Assets/HSJExample/AssetBundle/Shaders/FillColor.shader" Crc="2596862008" ABName="shaders/fillcolor.assetbundle" AssetName="FillColor.shader" AbDependce="" />
+  <ABList Path="Assets/HSJExample/AssetBundle/Shaders/Hsj.shader" Crc="4201023642" ABName="shaders/hsj.assetbundle" AssetName="Hsj.shader" AbDependce="" />
+  <ABList Path="Assets/HSJExample/AssetBundle/Texture/1.png" Crc="583870788" ABName="texture/1.assetbundle" AssetName="1.png" AbDependce="" />
+  <ABList Path="Assets/HSJExample/AssetBundle/Texture/2.png" Crc="1701663636" ABName="texture/2.assetbundle" AssetName="2.png" AbDependce="" />
+  <ABList Path="Assets/HSJExample/AssetBundle/Texture/changjinglu.tga" Crc="3851444393" ABName="texture/changjinglu.assetbundle" AssetName="changjinglu.tga" AbDependce="" />
+  <ABList Path="Assets/HSJExample/AssetBundle/Texture/zajiqiu1-2.tga" Crc="1821590353" ABName="texture/zajiqiu1-2.assetbundle" AssetName="zajiqiu1-2.tga" AbDependce="" />
+  <ABList Path="Assets/HSJExample/AssetBundle/Texture/zajiqiu3-4.tga" Crc="1951180760" ABName="texture/zajiqiu3-4.assetbundle" AssetName="zajiqiu3-4.tga" AbDependce="" />
 </AssetBundleConfig>

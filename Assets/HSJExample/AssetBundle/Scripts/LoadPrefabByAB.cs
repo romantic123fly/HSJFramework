@@ -24,9 +24,10 @@ public class LoadPrefabByAB : MonoBehaviour
 
         ResourceManager.Instance.CheckExtractResource();
 
-
-        var bundle = ResourceManager.Instance.LoadAssetBundle("prefabs/giraffe");
-        Instantiate(bundle.LoadAsset<GameObject>("giraffe"));
+        //var bundle = ResourceManager.Instance.LoadAssetBundle("prefabs/giraffe");
+        //Instantiate(bundle.LoadAsset<GameObject>("giraffe"));
+        //var bundle1 = ResourceManager.Instance.LoadAssetBundle("prefabs/cube");
+        //Instantiate(bundle1.LoadAsset<GameObject>("cube"));
     }
 
     // Update is called once per frame
