@@ -8,6 +8,7 @@ using System.Net;
 using System;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
+using System.ComponentModel;
 
 public class ThreadEvent {
     public string Key;
@@ -85,9 +86,7 @@ namespace SimpleFramework.Manager
         /// <param name="state"></param>
         private void OnSyncEvent(NotiData data)
         {
-            if (this.func != null) func(data);  //回调逻辑层
-            Debug.Log(data.evName + data.evParam);
-            //facade.SendMessageCommand(data.evName, data.evParam); //通知View层
+            func?.Invoke(data);  //回调逻辑层
         }
 
         // Update is called once per frame
@@ -104,6 +103,11 @@ namespace SimpleFramework.Manager
                         {
                             switch (e.Key)
                             {
+                                case MessageTypes.UPDATE_PROGRESS:
+                                    {
+                                        Debug.LogError(e.evParams);
+                                    }
+                                    break;
                                 case MessageTypes.UPDATE_EXTRACT:
                                     {     //解压文件
                                         OnExtractFile(e.evParams);
@@ -111,14 +115,14 @@ namespace SimpleFramework.Manager
                                     break;
                                 case MessageTypes.UPDATE_DOWNLOAD:
                                     {    //下载文件
-                                        OnDownloadFile(e.evParams);
+                                        OnDownloadFile(e.evParams); 
                                     }
                                     break;
                             }
                         }
-                        catch (System.Exception ex)
+                        catch (Exception ex)
                         {
-                            UnityEngine.Debug.LogError(ex.Message);
+                           Debug.LogError(ex.Message);
                         }
                     }
                 }
@@ -141,7 +145,7 @@ namespace SimpleFramework.Manager
                     sw.Start();
                     client.DownloadProgressChanged += new DownloadProgressChangedEventHandler(ProgressChanged);
                     client.DownloadFileAsync(new System.Uri(url), currDownFile);
-                    //client.DownloadFileCompleted += delegate { UnityEngine.Debug.Log("下载完成"); };
+                    client.DownloadFileCompleted += DownloadFileCompleted;
                     client.Dispose();
                 }
             }
@@ -151,28 +155,21 @@ namespace SimpleFramework.Manager
             }
         }
 
+        private void DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
+        {
+            Debug.Log("下载完成");
+            NotiData data = new NotiData(MessageTypes.UPDATE_DOWNLOAD, currDownFile);
+            SyncEvent?.Invoke(data);
+        }
+
         private void ProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
-            //UnityEngine.Debug.Log(e.ProgressPercentage);
-            /*
-            UnityEngine.Debug.Log(string.Format("{0} MB's / {1} MB's",
-                (e.BytesReceived / 1024d / 1024d).ToString("0.00"),
-                (e.TotalBytesToReceive / 1024d / 1024d).ToString("0.00")));
-            */
-            //float value = (float)e.ProgressPercentage / 100f;
-
+            //float pro = (float)e.ProgressPercentage / 100f;
+            //Debug.LogWarning(pro);
             string value = string.Format("{0} kb/s", (e.BytesReceived / 1024d / sw.Elapsed.TotalSeconds).ToString("0.00"));
-            Debug.Log(value);
             NotiData data = new NotiData(MessageTypes.UPDATE_PROGRESS, value);
-            if (SyncEvent != null) SyncEvent(data);
-
-            if (e.ProgressPercentage == 100 && e.BytesReceived == e.TotalBytesToReceive)
-            {
-                sw.Reset();
-
-                data = new NotiData(MessageTypes.UPDATE_DOWNLOAD, currDownFile);
-                if (SyncEvent != null) SyncEvent(data);
-            }
+            SyncEvent?.Invoke(data);
+          
         }
 
         /// <summary>
@@ -180,11 +177,9 @@ namespace SimpleFramework.Manager
         /// </summary>
         void OnExtractFile(List<object> evParams)
         {
-            Debug.LogWarning("Thread evParams: >>" + evParams.Count);
-
             ///------------------通知更新面板解压完成--------------------
-            NotiData data = new NotiData(MessageTypes.UPDATE_DOWNLOAD, null);
-            if (SyncEvent != null) SyncEvent(data);
+            NotiData data = new NotiData(MessageTypes.UPDATE_EXTRACT, null);
+            SyncEvent?.Invoke(data);
         }
 
         /// <summary>

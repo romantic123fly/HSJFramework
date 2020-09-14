@@ -111,7 +111,7 @@ public static class GlobalTools
         {
             FileStream fs = new FileStream(file, FileMode.Open);
             string size = fs.Length / 1024 + "";
-            Debug.Log("当前文件的大小：  " + file + "===>" + (fs.Length / 1024) + "KB");
+            //Debug.Log("当前文件的大小：  " + file + "===>" + (fs.Length / 1024) + "KB");
             System.Security.Cryptography.MD5 md5 = new System.Security.Cryptography.MD5CryptoServiceProvider();
             byte[] retVal = md5.ComputeHash(fs);
             fs.Close();
