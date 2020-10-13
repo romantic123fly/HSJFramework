@@ -14,7 +14,6 @@ using UnityEngine;
 
 public class ObjectManager : BaseManager<ObjectManager>
 {
-
     protected Dictionary<Type, object> m_ClassPoolDic = new Dictionary<Type, object>();
     /// <summary>
     /// 创建类的对象池，之后在外面可以保存ClassObjectPool<T>,然后可以调用Spaw和Recycle方法

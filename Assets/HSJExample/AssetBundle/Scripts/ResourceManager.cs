@@ -333,9 +333,8 @@ public class ResourceManager:BaseManager<ResourceManager>
     /// </summary>
     public IEnumerator OnUpdateResource()
     {
-
         string dataPath = GameDefine.GetAbDataPath();  //数据目录
-        string url =Application.streamingAssetsPath+"/";
+        string url =Directory.GetParent( Application.dataPath)+ "/UpdataResources/StreamingAssets/";
         Debug.Log("新版本资源路径：" + url);
         //string random = DateTime.Now.ToString("yyyymmddhhmmss");
         string listUrl = url + "files.txt";
@@ -344,7 +343,7 @@ public class ResourceManager:BaseManager<ResourceManager>
         WWW www = new WWW(listUrl); yield return www;
         if (www.error != null)
         {
-            Debug.Log("更新失败!!");
+            Debug.LogError("更新失败!!");
             yield break;
         }
         if (!Directory.Exists(dataPath))

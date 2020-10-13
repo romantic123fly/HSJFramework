@@ -15,19 +15,19 @@ using UnityEngine;
 
 public class LoadPrefabByAB : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private void Awake()
+    {
+        ResourceManager.Instance.CheckExtractResource();
+    }
     void Start()
     {
         //第一种方式
         //LoadAssetBundle();
         //第二种方式
-
-        ResourceManager.Instance.CheckExtractResource();
-
-        //var bundle = ResourceManager.Instance.LoadAssetBundle("prefabs/giraffe");
-        //Instantiate(bundle.LoadAsset<GameObject>("giraffe"));
-        //var bundle1 = ResourceManager.Instance.LoadAssetBundle("prefabs/cube");
-        //Instantiate(bundle1.LoadAsset<GameObject>("cube"));
+        var bundle = ResourceManager.Instance.LoadAssetBundle("prefabs/giraffe");
+        Instantiate(bundle.LoadAsset<GameObject>("giraffe"));
+        var bundle1 = ResourceManager.Instance.LoadAssetBundle("prefabs/cube");
+        Instantiate(bundle1.LoadAsset<GameObject>("cube"));
     }
 
     // Update is called once per frame
