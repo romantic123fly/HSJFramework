@@ -19,9 +19,9 @@ public class WebRequestDemo : MonoBehaviour
     void Start()
     {
         //访问网站
-        //WebRequestManager.Instance.Get("http://www.huanshj.com/",(a)=> { Debug.LogError(a.isDone); });
+        WebRequestManager.Instance.Get("http://www.huanshj.com/", (a) => { Debug.LogError(a.isDone); });
         //下载服务器视频文件
-        //WebRequestManager.Instance.DownloadFile("http://www.huanshj.com/World/Videos/1.mp4", Application.dataPath + "/HSJExample/UnityWebRequest/aaa.mp4", (a) => { Debug.LogError(a.downloadProgress); });
+        WebRequestManager.Instance.DownloadFile("http://www.huanshj.com/World/Videos/1.mp4", Application.dataPath + "/HSJExample/UnityWebRequest/aaa.mp4", (a) => { Debug.LogError(a.downloadProgress); });
         //下载服务器图片文件
         WebRequestManager.Instance.GetTexture("http://www.huanshj.com/Private/Wedding/Pictures/Xu001.jpg", (a) => { rawImage.texture = a; });
 
