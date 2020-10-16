@@ -18,6 +18,7 @@ public class WebRequestDemo : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         //访问网站
         WebRequestManager.Instance.Get("http://www.huanshj.com/", (a) => { Debug.LogError(a.isDone); });
         //下载服务器视频文件
