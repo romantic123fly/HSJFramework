@@ -22,6 +22,7 @@ public class CSharpEventTest : MonoBehaviour
         //eventHandler?.Invoke("搞事情");
         if (eventHandler != null)
         {
+			
             eventHandler("搞事情");
         }
     }
