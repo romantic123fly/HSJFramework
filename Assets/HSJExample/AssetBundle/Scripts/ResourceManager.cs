@@ -20,6 +20,7 @@ public class ResourceManager:BaseManager<ResourceManager>
 {
     private string[] m_Variants = { };
     public AssetBundleManifest manifest;
+
     public AssetBundle assetbundle;
     private Dictionary<string, AssetBundle> bundles;
     public List<string> DownloadFiles = new List<string>();//资源更新列表
