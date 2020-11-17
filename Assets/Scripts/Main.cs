@@ -16,8 +16,6 @@ public class Main : MonoBehaviour
 {
     public void ChangeScene(string name)
     {
-
-
         ScenesManager.Instance.LoadNextScene(name,true);
     }
 }
