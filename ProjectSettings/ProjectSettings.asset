@@ -622,6 +622,7 @@ PlayerSettings:
   webGLLinkerTarget: 1
   webGLThreadsSupport: 0
   scriptingDefineSymbols:
+    1: HOTFIX_ENABLE
     7: "\u571F\u65AF\u5148\u751FPAD"
   platformArchitecture: {}
   scriptingBackend: {}

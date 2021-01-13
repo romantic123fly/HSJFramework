@@ -6,21 +6,33 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/HSJExample/CSVTool/CSVScene.unity
+    path: Assets/HSJExample/InputSystem/Input.unity
+    guid: e4ca1c9dbb22abf4d902f2e7b91664e8
+  - enabled: 1
+    path: Assets/HSJExample/CSVTool/ParseCSV.unity
     guid: 8ebb99062f9a1724d9fb3d8b4f0dcdcf
   - enabled: 1
-    path: Assets/HSJExample/EventTest/EventTest.unity
+    path: Assets/HSJExample/EventTest/EventAction.unity
     guid: b931afa84070b054a9e9b76aa41482ba
   - enabled: 1
-    path: Assets/HSJExample/Finder/FindReference.unity
+    path: Assets/HSJExample/Finder/FindScripts.unity
     guid: 5201dbce3f418a04b8fb0e05ec8e04f0
   - enabled: 1
-    path: Assets/HSJExample/JsonTool/JsonScene.unity
+    path: Assets/HSJExample/JsonTool/ParseJson.unity
     guid: fd841b4f673f65c46a7ccdd839bf2152
   - enabled: 1
-    path: Assets/Main.unity
-    guid: f7031ddeed3595e4c8c4b62b77cc4018
-  - enabled: 1
-    path: Assets/HSJExample/MySqlDemo/MySqlScene.unity
+    path: Assets/HSJExample/MySqlDemo/MySql.unity
     guid: ca052a5de66c4b642b3933d6e365a1ef
+  - enabled: 1
+    path: Assets/HSJExample/Knapsack/Knapsack.unity
+    guid: 9d8c489eb2e354ec68c7834c2238da71
+  - enabled: 1
+    path: Assets/HSJExample/MvcInit/MVCM.unity
+    guid: f7990adab563cee488bd2e60ca78ddd6
+  - enabled: 1
+    path: Assets/HSJExample/StateMachine/StateMachine.unity
+    guid: f56bf6d140e682c49a69360edcdf62c8
+  - enabled: 1
+    path: Assets/HSJExample/ObjectPool/ObjectPool.unity
+    guid: c576e730bc0710c4bb7415c58786976a
   m_configObjects: {}
